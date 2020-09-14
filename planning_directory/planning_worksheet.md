@@ -32,7 +32,9 @@ This project will be a sports "betting" app (not real currency), in a similar st
 *Has many bids*
 
 **Bid**     
-*user(User ref.), game(Game ref.), amount, team*
+*owner\*, game\*, amount, team*
+
+>\* references to parent models
 
 ## Time/Priority Matrix 
 
@@ -48,6 +50,7 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 - User model (name, email, username, password, balance, correct, incorrect, favorite)
 - Game model (teams, sport, scores, )
 - Bid model (user, game, amount, team)
+- Views
 - Routes
 - Allow user to choose favorite sport/team
 - 100 coins on sign up
@@ -67,15 +70,16 @@ Based on the initial logic defined in the previous sections try and breakdown th
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Authentication | H | 1hr | -hr | -hr|
-| User model | H | 1hr | -hr | -hr|
-| Game model | H | 1hr | -hr | -hr|
-| Bet model | H | 2hr| -hr | -hr |
+| Authentication | H | 1hr | 1hr | -hr|
+| User model | H | 1hr | 1hr | -hr|
+| Game model | H | 1hr | 1.5hr | -hr|
+| Bet model | H | 2hr| 1.5hr | -hr |
 | Account model| M | 2hr | -hr | -hr|
-| Routes | H | 5hrs| -hr | -hr |
-| Sign up coins | M | 1hr | -hr | -hr|
+| Views| H | 5hr | -hr | -hr|
+| Routes | H | 2hrs| -hr | -hr |
+| Sign up coins | M | 1hr | .5hr | -hr|
 | Favorites | M | 2hr | -hr | -hr|
-| Total | - | 15hrs| -hrs | -hrs |
+| Total | - | 17hrs| 5.5hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
