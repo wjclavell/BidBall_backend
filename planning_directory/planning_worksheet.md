@@ -61,12 +61,12 @@ Time frames are also key in the development cycle.  You have limited time to cod
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Authentication | H | 1hr | 1.5hr | -hr|
+| Authentication | H | 1hr | -hr | -hr|
 | User model | H | 1hr | -hr | -hr|
-| Game model | H | 1hr | 2hr | -hr|
+| Game model | H | 1hr | -hr | -hr|
 | Bet model | H | 2hr| -hr | -hr |
-| Account model| M | 2hr | 2hr | -hr|
-| Routes | H | 5hrs| 2hr | -hr |
+| Account model| M | 2hr | -hr | -hr|
+| Routes | H | 5hrs| -hr | -hr |
 | Sign up coins | M | 1hr | -hr | -hr|
 | Favorites | M | 2hr | -hr | -hr|
 | Total | - | 15hrs| -hrs | -hrs |
