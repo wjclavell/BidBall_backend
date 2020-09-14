@@ -49,9 +49,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255, null=True, blank=True)    # name fields can be empty
     last_name = models.CharField(max_length=255, null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=True)    # default True for testing purposes, can be changed later to alase
+    is_staff = models.BooleanField(default=True)    # default True for testing purposes, can be changed later to False
     created_at = models.DateTimeField(auto_now_add=True)    # creation time is 'frozen' can't be edited
     updated_at = models.DateTimeField(auto_now=True)    # current time, will be changed on update
+    balance = models.IntegerField(default=100)    # users start with 100 coins when they sign up
+    correct = models.IntegerField(default=0)    # used to keep track of user's correct picks
+    incorrect = models.IntegerField(default=0)    # used to keep track of user's incorrect picks
+    favorite_league = models.CharField(max_length=25, null=True, blank=True)    # user's favorite league,
+    # can be blank, used to determine what category the app will be defaulted to
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

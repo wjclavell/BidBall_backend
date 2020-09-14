@@ -5,11 +5,9 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Day 1| Project Description | Complete
-|Day 1| Wireframes / Priority Matrix / Timeline `backend` and `frontend`| Incomplete
-|Day 2| Working RestAPI | Incomplete
-|Day 3| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|Day 4| MVP & Bug Fixes | Incomplete
-|Day 5| Final Touches and Present | Incomplete
+|Day 1| Wireframes / Priority Matrix / Timeline `backend` and `frontend`| Complete
+|Day 2| Set up models | Incomplete
+|Day 3| Set up views, tests routes | Incomplete
 
 ## Project Description
 
@@ -19,12 +17,18 @@ This project will be a sports "betting" app (not real currency), in a similar st
  . Users can view their current balance, favorite team/sport, and their stats. Games will be updated each day using a
   third-party api to retrieve game data.
 
-## Wireframes
+## Models
 
-Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe. Do not include the actual image and have it render on the page.  
+**User**    
+*name, email, username, password, balance, correct, incorrect, favorite*    
+*Has many Bids*
 
-- [Mobile](https://res.cloudinary.com/wjclavell/image/upload/v1600036460/P4/SportsBettingMobile_iff43t.png)
-- [Desktop](https://res.cloudinary.com/wjclavell/image/upload/v1600053553/P4/p4-desktop_mgscsk.png)
+**Game**    
+*teams, sport, scores*  
+*Has many bids*
+
+**Bid**     
+*user, game, amount, team*
 
 ## Time/Priority Matrix 
 
@@ -37,10 +41,9 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 #### MVP
 
 - Authentication
-- User model (name, email, username, password)
+- User model (name, email, username, password, balance, correct, incorrect, favorite)
 - Game model (teams, sport, scores, )
-- Bet model (amount, team)
-- Account model (currency, favorites, stats)
+- Bid model (user, game, amount, team)
 - Routes
 - Allow user to choose favorite sport/team
 - 100 coins on sign up
@@ -54,9 +57,8 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 
 ## Functional Components
 
-Based on the initial logic defined in the previous sections try and breakdown the logic further into functional components, and by that we mean functions.  Try and capture what logic would need to be defined if the game was broken down into the following categories.
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe.
+Based on the initial logic defined in the previous sections try and breakdown the logic further into functional
+ components.
 
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
@@ -72,7 +74,7 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Total | - | 15hrs| -hrs | -hrs |
 
 #### PostMVP
-| Component | Priority | Estimated Time | Time Invetsted | Actual Time |
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Filter | H | 2hr | -hr | -hr|
 | Betting history | M | 4hr | -hr | -hr|
@@ -81,7 +83,7 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Total | - | 10hrs| -hrs | -hrs |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project. 
+- Flask
 
 ## Code Snippet
 
