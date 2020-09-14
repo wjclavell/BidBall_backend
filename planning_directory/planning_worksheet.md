@@ -5,9 +5,13 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Day 1| Project Description | Complete
-|Day 1| Wireframes / Priority Matrix / Timeline `backend` and `frontend`| Complete
+|Day 1| Work-plan / Priority Matrix / Timeline `backend`| Complete
+|Day 1| Create app and configure JWT auth | Complete
 |Day 2| Set up models | Incomplete
-|Day 3| Set up views, tests routes | Incomplete
+|Day 3| Set up views| Incomplete
+|Day 3| Set up routes | Incomplete
+|Day 4| Test the endpoints/routes/CRUD | Incomplete
+
 
 ## Project Description
 
@@ -24,11 +28,11 @@ This project will be a sports "betting" app (not real currency), in a similar st
 *Has many Bids*
 
 **Game**    
-*teams, sport, scores*  
+*team1, team2, sport, score1, score2*  
 *Has many bids*
 
 **Bid**     
-*user, game, amount, team*
+*user(User ref.), game(Game ref.), amount, team*
 
 ## Time/Priority Matrix 
 
@@ -84,6 +88,8 @@ Based on the initial logic defined in the previous sections try and breakdown th
 
 ## Additional Libraries
 - Flask
+- Restframework
+- JWT
 
 ## Code Snippet
 

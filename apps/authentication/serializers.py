@@ -7,10 +7,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=255, min_length=8, write_only=True)
     # user cannot be allowed to change the jwt token
     token = serializers.CharField(max_length=255, read_only=True)
+    balance = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'password', 'token')
+        fields = ('username', 'email', 'first_name', 'last_name', 'password', 'token', 'balance')
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
@@ -21,10 +22,11 @@ class LoginSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length=255)
     password = serializers.CharField(max_length=255, write_only=True)
     token = serializers.CharField(max_length=255, read_only=True)
+    balance = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'token')
+        fields = ('username', 'email', 'password', 'token', 'balance')
 
     def validate(self, data):
         username = data.get('username', None)
@@ -53,7 +55,8 @@ class LoginSerializer(serializers.ModelSerializer):
         return {
             "username": user.username,
             "email": user.email,
-            "token": user.token
+            "token": user.token,
+            "balance": user.balance
         }
 
 
