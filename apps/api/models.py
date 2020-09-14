@@ -3,7 +3,7 @@ from apps.authentication.models import User
 
 # Create your models here.
 class Game(models.Model):
-    id = models.IntegerField(primary_key=True)    # event_id from 'rundown' associates user bid w/ this game
+    id = models.CharField(max_length=255, primary_key=True)   # event_id from 'rundown' associates user bid w/ this game
     sport = models.IntegerField(null=True)    # id number from 'rundown' ie: 3 = MLB, 2 = NFL
     team1 = models.CharField(max_length=100)    # team names
     team2 = models.CharField(max_length=100)
