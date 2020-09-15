@@ -33,6 +33,18 @@ class GameViewSet(viewsets.ModelViewSet):
         })
 
 
+# class & method to get a single game by event_id, used to update scores when status of event is FINAL
+class SingleGame(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = GameSerializer
+
+    def get_queryset(self):
+        # localhost:8000/games/pk/
+        if self.kwargs.get("pk"):
+            game = Game.objects.get(pk=self.kwargs["pk"])
+            return game
+
+
 class BidViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = BidSerializer
