@@ -39,7 +39,7 @@ class SingleGame(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GameSerializer
 
     def get_queryset(self):
-        # localhost:8000/games/pk/
+        # localhost:api/8000/games/pk/
         if self.kwargs.get("pk"):
             game = Game.objects.get(pk=self.kwargs["pk"])
             return game
@@ -62,3 +62,15 @@ class BidViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+# class & method to get a single game by event_id, used to update scores when status of event is FINAL
+class SingleBid(generics.RetrieveUpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = GameSerializer
+
+    def get_queryset(self):
+        # localhost:8000/api/bids/pk/
+        if self.kwargs.get("pk"):
+            bid = Bid.objects.get(pk=self.kwargs["pk"])
+            return bid
