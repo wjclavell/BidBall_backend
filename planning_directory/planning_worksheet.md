@@ -71,15 +71,14 @@ Based on the initial logic defined in the previous sections try and breakdown th
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Authentication | H | 1hr | 1hr | -hr|
-| User model | H | 1hr | 1hr | -hr|
+| User model | H | 2hr | 1hr | -hr|
 | Game model | H | 1hr | 1.5hr | -hr|
-| Bet model | H | 2hr| 1.5hr | -hr |
-| Account model| M | 2hr | -hr | -hr|
-| Views| H | 5hr | -hr | -hr|
-| Routes | H | 2hrs| -hr | -hr |
+| Bet model | H | 2hr| 2.5hr | -hr |
+| Views| H | 5hr | 3hr | -hr|
+| Routes | H | 2hrs| 1hr | -hr |
 | Sign up coins | M | 1hr | .5hr | -hr|
 | Favorites | M | 2hr | -hr | -hr|
-| Total | - | 17hrs| 5.5hrs | -hrs |
+| Total | - | 16hrs| 10.5hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
