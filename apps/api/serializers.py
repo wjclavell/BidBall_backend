@@ -8,7 +8,7 @@ class BidSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bid
-        fields = ('id', 'game', 'owner', 'amount', 'team', 'created_at', 'updated_at')
+        fields = ('id', 'game', 'owner', 'amount', 'team', 'result', 'created_at', 'updated_at')
 
 
 class GameSerializer(serializers.ModelSerializer):
