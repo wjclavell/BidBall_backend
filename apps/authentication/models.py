@@ -2,8 +2,9 @@ from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
-from django.contrib.postgres.fields import ArrayField   # this allows the use of Arrays as fields
-from rest_framework_jwt.settings import api_settings    # this allows us to set the jwt settings
+from django.contrib.postgres.fields import ArrayField  # this allows the use of Arrays as fields
+from rest_framework_jwt.settings import api_settings  # this allows us to set the jwt settings
+
 # setting jwt payload
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -26,7 +27,7 @@ class UserManager(BaseUserManager):
             is_staff=False
         )
 
-        user.set_password(password)    # encrypts password and stores it in database
+        user.set_password(password)  # encrypts password and stores it in database
         user.save()
 
         return user
@@ -43,20 +44,22 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(db_index=True,max_length=255, unique=True)  # username & email unique to each user
+    username = models.CharField(db_index=True, max_length=255, unique=True)  # username & email unique to each user
     email = models.EmailField(db_index=True, unique=True)
-    first_name = models.CharField(max_length=255, null=True, blank=True)    # name fields can be empty
+    first_name = models.CharField(max_length=255, null=True, blank=True)  # name fields can be empty
     last_name = models.CharField(max_length=255, null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=True)    # default True for testing purposes, can be changed later to False
-    created_at = models.DateTimeField(auto_now_add=True)    # creation time is 'frozen' can't be edited
-    updated_at = models.DateTimeField(auto_now=True)    # current time, will be changed on update
-    profile_pic = models.CharField()    # will be used to upload file or image url
-    balance = models.IntegerField(default=100)    # users start with 100 coins when they sign up
-    correct = models.IntegerField(default=0)    # used to keep track of user's correct picks
-    incorrect = models.IntegerField(default=0)    # used to keep track of user's incorrect picks
+    is_staff = models.BooleanField(default=True)  # default True for testing purposes, can be changed later to False
+    created_at = models.DateTimeField(auto_now_add=True)  # creation time is 'frozen' can't be edited
+    updated_at = models.DateTimeField(auto_now=True)  # current time, will be changed on update
+    # will be used to upload file or image url
+    profile_pic = models.TextField(
+        default='https://res.cloudinary.com/wjclavell/image/upload/v1600292929/P4/bidball_default-user_lrcu7s.png')
+    balance = models.IntegerField(default=100)  # users start with 100 coins when they sign up
+    correct = models.IntegerField(default=0)  # used to keep track of user's correct picks
+    incorrect = models.IntegerField(default=0)  # used to keep track of user's incorrect picks
     # used to determine what category the app will be defaulted to
-    favorite_league = models.IntegerField(null=True, blank=True)    # corresponds to sport_id in 'the rundown'
+    favorite_league = models.IntegerField(null=True, blank=True)  # corresponds to sport_id in 'the rundown'
     # will be used for user to update
     favorite_teams = ArrayField(models.CharField(max_length=255, blank=True, default=''), default=list, null=True)
 
