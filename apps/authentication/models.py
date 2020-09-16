@@ -2,9 +2,8 @@ from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
-# this allows us to set the jwt settings
-from rest_framework_jwt.settings import api_settings
-
+from django.contrib.postgres.fields import ArrayField   # this allows the use of Arrays as fields
+from rest_framework_jwt.settings import api_settings    # this allows us to set the jwt settings
 # setting jwt payload
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -55,8 +54,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     balance = models.IntegerField(default=100)    # users start with 100 coins when they sign up
     correct = models.IntegerField(default=0)    # used to keep track of user's correct picks
     incorrect = models.IntegerField(default=0)    # used to keep track of user's incorrect picks
-    favorite_league = models.CharField(max_length=25, null=True, blank=True)    # user's favorite league,
-    # can be blank, used to determine what category the app will be defaulted to
+    # used to determine what category the app will be defaulted to
+    favorite_league = models.IntegerField(null=True, blank=True)    # corresponds to sport_id in 'the rundown'
+    # will be used for user to update
+    favorite_teams = ArrayField(models.CharField(max_length=255, blank=True, default=''), default=list, null=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

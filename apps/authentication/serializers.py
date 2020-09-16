@@ -11,7 +11,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'password', 'token', 'balance')
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password', 'token', 'balance')
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
@@ -26,7 +26,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'token', 'balance')
+        fields = ('id', 'username', 'email', 'password', 'token', 'balance')
 
     def validate(self, data):
         username = data.get('username', None)
@@ -53,6 +53,7 @@ class LoginSerializer(serializers.ModelSerializer):
             )
 
         return {
+            "id": user.id,
             "username": user.username,
             "email": user.email,
             "token": user.token,
@@ -63,4 +64,4 @@ class LoginSerializer(serializers.ModelSerializer):
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email')
+        fields = ('id', 'username', 'email', 'correct', 'incorrect', 'balance', 'favorite_league', 'favorite_teams')
