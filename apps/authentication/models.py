@@ -51,6 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=True)    # default True for testing purposes, can be changed later to False
     created_at = models.DateTimeField(auto_now_add=True)    # creation time is 'frozen' can't be edited
     updated_at = models.DateTimeField(auto_now=True)    # current time, will be changed on update
+    profile_pic = models.CharField()    # will be used to upload file or image url
     balance = models.IntegerField(default=100)    # users start with 100 coins when they sign up
     correct = models.IntegerField(default=0)    # used to keep track of user's correct picks
     incorrect = models.IntegerField(default=0)    # used to keep track of user's incorrect picks
