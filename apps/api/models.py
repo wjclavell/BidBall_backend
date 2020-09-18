@@ -21,7 +21,7 @@ class Bid(models.Model):
     game = models.ForeignKey(Game, on_delete=models.DO_NOTHING)   # associate a bid with specific game
     amount = models.IntegerField()    # how much the user bids
     team = models.CharField(max_length=100)    # user's choice of who will win
-    result = models.CharField(max_length=5,blank=True,null=True)    # updated based on result of game (Win/Lose)
+    result = models.CharField(max_length=10, blank=True,null=True)    # updated based on result of game (Win/Lose)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
