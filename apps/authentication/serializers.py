@@ -57,7 +57,12 @@ class LoginSerializer(serializers.ModelSerializer):
             "username": user.username,
             "email": user.email,
             "token": user.token,
-            "balance": user.balance
+            "balance": user.balance,
+            "correct": user.correct,
+            "incorrect": user.incorrect,
+            "profile_pic": user.profile_pic,
+            "favorite_league": user.favorite_league,
+            "favorite_teams": user.favorite_teams
         }
 
 
