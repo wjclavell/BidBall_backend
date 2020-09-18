@@ -59,7 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     correct = models.IntegerField(default=0)  # used to keep track of user's correct picks
     incorrect = models.IntegerField(default=0)  # used to keep track of user's incorrect picks
     # used to determine what category the app will be defaulted to
-    favorite_league = models.IntegerField(null=True, blank=True)  # corresponds to sport_id in 'the rundown'
+    favorite_league = models.CharField(max_length=25, null=True, blank=True)  # corresponds to sport_id in 'the rundown'
     # will be used for user to update
     favorite_teams = ArrayField(models.CharField(max_length=255, blank=True, default=''), default=list, null=True)
 

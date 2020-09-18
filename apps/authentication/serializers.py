@@ -23,10 +23,15 @@ class LoginSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=255, write_only=True)
     token = serializers.CharField(max_length=255, read_only=True)
     balance = serializers.IntegerField(read_only=True)
+    favorite_league = serializers.CharField(max_length=100)
+    correct = serializers.IntegerField(read_only=True)
+    incorrect = serializers.IntegerField(read_only=True)
+    profile_pic = serializers.CharField(max_length=1000)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'token', 'balance')
+        fields = ('id', 'username', 'email', 'password', 'token', 'balance', 'correct', 'incorrect', 'profile_pic',
+                  'favorite_league', 'favorite_teams')
 
     def validate(self, data):
         username = data.get('username', None)
@@ -65,8 +70,8 @@ class LoginSerializer(serializers.ModelSerializer):
             "favorite_teams": user.favorite_teams
         }
 
-
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'profile_pic', 'email', 'correct', 'incorrect', 'balance', 'favorite_league', 'favorite_teams')
+        fields = ('id', 'username', 'profile_pic', 'email', 'correct', 'incorrect', 'balance', 'favorite_league',
+                  'favorite_teams')
