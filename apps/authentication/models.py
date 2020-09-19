@@ -54,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)  # current time, will be changed on update
     # will be used to upload file or image url
     profile_pic = models.TextField(
-        default='https://res.cloudinary.com/wjclavell/image/upload/v1600292929/P4/bidball_default-user_lrcu7s.png')
+        default='https://res.cloudinary.com/wjclavell/image/upload/v1600537321/P4/bidball_default-user.svg')
     balance = models.IntegerField(default=100)  # users start with 100 coins when they sign up
     correct = models.IntegerField(default=0)  # used to keep track of user's correct picks
     incorrect = models.IntegerField(default=0)  # used to keep track of user's incorrect picks
