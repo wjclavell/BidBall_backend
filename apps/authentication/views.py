@@ -25,6 +25,7 @@ class RegistrationAPIView(APIView):
                 "password": request.data.get('password'),
                 "first_name": request.data.get('first_name'),
                 "last_name": request.data.get('last_name'),
+                "favorite_league": request.data.get('favorite_league')
             }
 
         serializer = self.serializer_class(data=user)

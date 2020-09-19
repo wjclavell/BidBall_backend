@@ -8,6 +8,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     # user cannot be allowed to change the jwt token
     token = serializers.CharField(max_length=255, read_only=True)
     balance = serializers.IntegerField(read_only=True)
+    favorite_league = serializers.CharField(max_length=255)
 
     class Meta:
         model = User
@@ -24,7 +25,7 @@ class LoginSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=255, write_only=True)
     token = serializers.CharField(max_length=255, read_only=True)
     balance = serializers.IntegerField(read_only=True)
-    favorite_league = serializers.CharField(max_length=100)
+    favorite_league = serializers.CharField(max_length=100, read_only=True)
     correct = serializers.IntegerField(read_only=True)
     incorrect = serializers.IntegerField(read_only=True)
     profile_pic = serializers.CharField(max_length=1000, read_only=True)

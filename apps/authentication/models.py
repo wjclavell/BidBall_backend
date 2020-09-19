@@ -12,7 +12,7 @@ jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 # Create your models here.
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, password=None, first_name=None, last_name=None):
+    def create_user(self, username, email, password=None, first_name=None, last_name=None, favorite_league=None):
         if username is None:
             raise TypeError("Users must have a username")
         if email is None:
@@ -24,6 +24,7 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),  # inherited from BaseUserManager class, sets email to lowercase
             first_name=first_name,
             last_name=last_name,
+            favorite_league=favorite_league,
             is_staff=False
         )
 
