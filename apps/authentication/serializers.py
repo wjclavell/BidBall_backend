@@ -1,6 +1,22 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from .models import User
+from rest_framework.fields import ListField
+
+
+class StringArrayField(ListField):
+    """
+    String representation of an array field.
+    """
+
+    def to_representation(self, obj):
+        obj = super().to_representation(obj)
+        # convert list to string
+        return ",".join([str(element) for element in obj])
+
+    def to_internal_value(self, data):
+        data = data.split(",")  # convert string to list
+        return super().to_internal_value(self, data)
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -9,11 +25,13 @@ class RegistrationSerializer(serializers.ModelSerializer):
     token = serializers.CharField(max_length=255, read_only=True)
     balance = serializers.IntegerField(read_only=True)
     favorite_league = serializers.CharField(max_length=255)
+    favorite_teams = StringArrayField(read_only=True)
 
     class Meta:
         model = User
         fields = (
-            'id', 'username', 'email', 'first_name', 'last_name', 'password', 'token', 'balance', 'favorite_league')
+            'id', 'username', 'email', 'first_name', 'last_name', 'password', 'token', 'balance', 'favorite_league',
+            'favorite_teams')
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
@@ -29,11 +47,12 @@ class LoginSerializer(serializers.ModelSerializer):
     correct = serializers.IntegerField(read_only=True)
     incorrect = serializers.IntegerField(read_only=True)
     profile_pic = serializers.CharField(max_length=1000, read_only=True)
+    favorite_teams = StringArrayField(read_only=True)
 
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password', 'token', 'balance', 'correct', 'incorrect', 'profile_pic',
-                  'favorite_league')
+                  'favorite_league', 'favorite_teams')
 
     def validate(self, data):
         username = data.get('username', None)
