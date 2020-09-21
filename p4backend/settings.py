@@ -26,7 +26,7 @@ SECRET_KEY = 'e7=%mj&h0-dtmip3sd=-y$-61(&z3#dfeu@ws%e)$jqw#7hci4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://project-cuatro.herokuapp.com/"]
 
 # Application definition
 
